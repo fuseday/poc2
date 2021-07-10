@@ -1,4 +1,5 @@
 const path = require('path');
+const LiveReloadWebpackPlugin = require('@kooneko/livereload-webpack-plugin');
 
 module.exports = {
     resolve: {
@@ -6,4 +7,7 @@ module.exports = {
             '@': path.resolve('resources/js'),
         },
     },
+    plugins: [
+        new LiveReloadWebpackPlugin(),
+    ],
 };

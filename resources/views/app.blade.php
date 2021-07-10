@@ -7,17 +7,26 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
         <!-- Scripts -->
         @routes
-        <script src="{{ mix('js/app.js') }}" defer></script>
+
+        @production
+        <script src="/js/vue.min.js" defer></script>
+        @else
+        <script src="/js/vue.js" defer></script>
+        @endproduction
+
+        @stack('register-components')
+
+        <script src="{{ mix('/js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
+    <body>
         @inertia
+
+        @env('local')
+            <script src="http://localhost:35729/livereload.js"></script>
+        @endenv
     </body>
 </html>
