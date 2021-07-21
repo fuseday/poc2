@@ -8,12 +8,16 @@ import Vuetify from 'vuetify'
 Vue.use(Vuetify)
 const vuetify = new Vuetify()
 
+import torque from '@fuseday/torque'
+Vue.use(torque)
+
 Vue.mixin({ methods: { route } })
 
 import PortalVue from 'portal-vue'
 Vue.use(PortalVue)
 
 import Layout from './Layouts/VuetifyLayout'
+
 
 createInertiaApp({
     resolve: name => {
