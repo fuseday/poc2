@@ -108,12 +108,9 @@ export default {
     methods: {
         reserve() {
             this.loading = true
-
-            this.$torque.bff(this, 'Foo@bar', {
+            this.$bff( 'Foo@bar', {
                 foo: 'bar',
-            })
-
-            setTimeout(() => (this.loading = false), 2000)
+            }).then(() => this.loading = false)
         },
     },
 }
