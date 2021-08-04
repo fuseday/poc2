@@ -4,7 +4,7 @@
             v-model="drawer"
             app
         >
-            <!--  -->
+            <sidebar-menu />
         </v-navigation-drawer>
 
         <v-app-bar app>

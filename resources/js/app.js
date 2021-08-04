@@ -8,16 +8,18 @@ import Vuetify from 'vuetify'
 Vue.use(Vuetify)
 const vuetify = new Vuetify()
 
-import torque from '@fuseday/torque'
-Vue.use(torque)
+import torque from '@fuseday/torquejs'
+Vue.use(torque.plugin())
 
 Vue.mixin({ methods: { route } })
 
 import PortalVue from 'portal-vue'
 Vue.use(PortalVue)
 
-import Layout from './Layouts/VuetifyLayout'
+const files = require.context('./components', true, /\.vue|\.js$/i)
+files.keys().map(key => window.Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+import Layout from './Layouts/VuetifyLayout'
 
 createInertiaApp({
     resolve: name => {

@@ -1,6 +1,5 @@
 const mix = require('laravel-mix');
 mix
-    .webpackConfig(require('./webpack.config'))
     .js('resources/js/app.js', 'public/js')
     .copy([
         'node_modules/vue/dist/vue.js',

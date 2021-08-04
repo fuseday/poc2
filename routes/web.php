@@ -24,6 +24,19 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/details', function () {
+    return Inertia::render('Details', [
+        'foo' => 'bar',
+    ]);
+});
+
+Route::get('/html', function () {
+    return Inertia::render('HtmlPage', [
+        'html' => view('partials.foobar')->render(),
+    ]);
+});
+
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');

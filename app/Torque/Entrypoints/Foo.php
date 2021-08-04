@@ -2,15 +2,19 @@
 
 namespace App\Torque\Entrypoints;
 
+use Fuseday\Torque\Response;
+
 class Foo
 {
     public function bar()
     {
-//        abort(419, 'CSRF token invalid on purpose.');
+//        dd(request()->all());
 
-//        abort(500, 'Foooooooo bar baz bat bot.');
+        sleep(1);
 
-
-        dd('yoooo');
+        return Response::make()
+            ->state(['loading' => false])
+//            ->toastSuccess('Fooo')
+            ;
     }
 }
