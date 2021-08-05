@@ -14,12 +14,11 @@ class ContactOfTheDay
             ->get()
             ->random();
 
-        ray($randomContact);
-
         return Response::make()
             ->state([
                 'contact' => $randomContact,
             ])
+            ->event('new-contact', $randomContact)
             ->toastSuccess('There you go, good luck!');
     }
 }

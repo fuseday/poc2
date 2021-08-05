@@ -1,7 +1,11 @@
 <div>
     <p>Dashboard rendering html and custom components from the backend</p>
 
-    <contact-of-the-day></contact-of-the-day>
+    <contact-of-the-day />
+
+    <v-card class="mx-auto" max-width="344">
+        <contact-log />
+    </v-card>
 
     <div>
         Whatever I want, <strong> even custom Vue Components </strong>
