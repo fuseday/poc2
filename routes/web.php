@@ -25,6 +25,12 @@ Route::get('/details', function () {
     ]);
 });
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/secret', function () {
+    return Inertia::render('HtmlPage', [
+        'html' => view('partials.secret')->render(),
+    ]);
+});
+
 Route::get('/html', function () {
     return Inertia::render('HtmlPage', [
         'html' => view('partials.live-stream-demo')->render(),

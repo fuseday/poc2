@@ -25,8 +25,9 @@ export default {
         selectedItem: null,
         items: [
             { href:'/', text: 'Dashboard', icon: 'mdi-view-dashboard-variant-outline' },
-            { href:'/details', text: 'Details', icon: 'mdi-package-variant-closed' },
-            { href:'/html', text: 'Html', icon: 'mdi-dropbox' },
+            { href:'/details', text: 'Details', icon: 'mdi-account-details' },
+            { href:'/secret', text: 'Secret', icon: 'mdi-lock' },
+            { href:'/html', text: 'Html', icon: 'mdi-language-html5' },
         ],
     }),
     methods: {
