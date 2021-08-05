@@ -27,7 +27,12 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('see-secret-stuff', function (User $user) {
-            return $user->last_name === 'Doe';
+
+            // Would really check for the permission...
+
+//            return false;
+
+            return true;
         });
     }
 }
