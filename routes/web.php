@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::get('/details', function () {
     return Inertia::render('Details', [
-        'foo' => 'bar',
+        'bladeCounter' => view('partials.simple-counter')->render(),
     ]);
 });
 

@@ -11,6 +11,9 @@ const vuetify = new Vuetify()
 import torque from '@fuseday/torquejs'
 Vue.use(torque.plugin())
 
+import Fragment from 'vue-fragment'
+Vue.use(Fragment.Plugin)
+
 Vue.mixin({ methods: { route } })
 
 import PortalVue from 'portal-vue'
