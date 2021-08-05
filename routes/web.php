@@ -16,12 +16,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Inertia::render('Welcome');
 });
 
 Route::get('/details', function () {
@@ -32,7 +27,7 @@ Route::get('/details', function () {
 
 Route::get('/html', function () {
     return Inertia::render('HtmlPage', [
-        'html' => view('partials.foobar')->render(),
+        'html' => view('partials.live-stream-demo')->render(),
     ]);
 });
 

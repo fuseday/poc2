@@ -4,7 +4,7 @@
             v-model="drawer"
             app
         >
-            <sidebar-menu />
+            <sidebar-menu/>
         </v-navigation-drawer>
 
         <v-app-bar app>
@@ -14,15 +14,19 @@
         </v-app-bar>
 
         <v-main>
-            <slot />
+            <slot/>
         </v-main>
+        <t-notifications></t-notifications>
     </v-app>
 </template>
 
 <script>
+import TNotifications from "../components/TNotifications";
+
 export default {
+    components: {TNotifications},
     data: () => ({
-        drawer: null,
+        drawer: false,
     }),
 }
 </script>

@@ -22,7 +22,7 @@
 <script>
 export default {
     data: () => ({
-        selectedItem: 1,
+        selectedItem: null,
         items: [
             { href:'/', text: 'Dashboard', icon: 'mdi-view-dashboard-variant-outline' },
             { href:'/details', text: 'Details', icon: 'mdi-package-variant-closed' },
