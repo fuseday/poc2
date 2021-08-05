@@ -5,7 +5,7 @@
             <span>{{ text }}</span>
         </v-btn>
 
-        <div v-else> Now that's a joke. Chuck Norris <br> stuff can't be deleted! =) </div>
+        <div v-else> Chuck Norris stuff <br> can't be deleted! =) </div>
     </div>
 </template>
 

@@ -25,20 +25,7 @@
                 <delete-joke />
                 @endcan
 
-                <v-row
-                    align="center"
-                    justify="end"
-                >
-                    <v-icon class="mr-1">
-                        mdi-heart
-                    </v-icon>
-                    <span class="subheading mr-2">256</span>
-                    <span class="mr-1">·</span>
-                    <v-icon class="mr-1">
-                        mdi-share-variant
-                    </v-icon>
-                    <span class="subheading">45</span>
-                </v-row>
+                <x-joke-counters like-icon="mdi-heart" :share-icon="$shareIcon" />
             </v-list-item>
         </v-card-actions>
     </v-card>

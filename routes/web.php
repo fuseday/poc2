@@ -1,5 +1,6 @@
 <?php
 
+use App\Torque\Entrypoints\Nested\DumpDie;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,7 +17,10 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome');
+    return Inertia::render('Welcome', [
+        'joke' => __('chuck-norris.another_joke', [], 'en'),
+        'entrypoint' => 'Nested.DumpDie@dd',
+    ]);
 });
 
 Route::get('/details', function () {
@@ -27,7 +31,10 @@ Route::get('/details', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/secret', function () {
     return Inertia::render('HtmlPage', [
-        'html' => view('partials.secret')->render(),
+        'html' => view('partials.secret', [
+            'shareIcon' => 'mdi-share',
+//            'shareIcon' => 'mdi-share-circle', // switch me
+        ])->render(),
     ]);
 });
 
