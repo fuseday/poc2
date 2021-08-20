@@ -4,17 +4,11 @@
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
-    "repositories": [
-        {
-            "type": "path",
-            "url": "./../torque"
-        }
-    ],
     "require": {
         "php": "^8.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
-        "fuseday/torque": "dev-main",
+        "fuseday/torque": "^0.0.3",
         "guzzlehttp/guzzle": "^7.0.1",
         "inertiajs/inertia-laravel": "^0.3.5",
         "laravel/framework": "^8.40",
