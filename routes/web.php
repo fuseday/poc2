@@ -1,9 +1,8 @@
 <?php
 
-use App\Torque\Entrypoints\Nested\DumpDie;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,35 +15,13 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'joke' => __('chuck-norris.another_joke', [], 'en'),
-        'entrypoint' => 'Nested.DumpDie@dd',
-    ]);
+Route::get('/', WelcomeController::class);
+Route::get('/details', [PagesController::class, 'details']);
+Route::get('/html', [PagesController::class, 'html']);
+Route::get('/remote-components', [PagesController::class, 'remoteComponents']);
+
+Route::group(['middleware' => ['auth:sanctum', 'verified'] ], function () {
+    Route::get('/secret', [PagesController::class, 'secret']);
+    Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
 });
 
-Route::get('/details', function () {
-    return Inertia::render('Details', [
-        'bladeCounter' => view('partials.simple-counter')->render(),
-    ]);
-});
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/secret', function () {
-    return Inertia::render('HtmlPage', [
-        'html' => view('partials.secret', [
-            'shareIcon' => 'mdi-share',
-//            'shareIcon' => 'mdi-share-circle', // switch me
-        ])->render(),
-    ]);
-});
-
-Route::get('/html', function () {
-    return Inertia::render('HtmlPage', [
-        'html' => view('partials.live-stream-demo')->render(),
-    ]);
-});
-
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');

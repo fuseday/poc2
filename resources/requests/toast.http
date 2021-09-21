@@ -1,0 +1,4 @@
+POST {{realtimeHost}}/api/toast
+Content-Type: application/json
+
+{ "text": "I come from outside", "icon": "mdi-cursor-default-outline", "color": "warning" }

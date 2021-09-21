@@ -3,10 +3,22 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 import Vue from 'vue'
+window.EventBus = new Vue
 import { createInertiaApp } from '@inertiajs/inertia-vue'
 import Vuetify from 'vuetify'
 Vue.use(Vuetify)
 const vuetify = new Vuetify()
+
+import { io } from "socket.io-client"
+console.log(process.env.MIX_SOCKETIO_SERVER)
+const socket = io(process.env.MIX_SOCKETIO_SERVER)
+
+
+socket.on('toast', (incomingToast) => {
+    console.log(incomingToast);
+    toast(incomingToast)
+})
+
 
 import torque from '@fuseday/torquejs'
 Vue.use(torque.plugin())
@@ -14,12 +26,32 @@ Vue.use(torque.plugin())
 import Fragment from 'vue-fragment'
 Vue.use(Fragment.Plugin)
 
+function toast(toast) {
+    toast = { text: 'foo', icon: 'mdi-cards', color: 'info', ...toast}
+
+    window.EventBus.$emit('notify',
+        {
+            message: {
+                text: toast.text,
+                icon: toast.icon,
+            },
+            color: toast.color,
+        }
+    )
+}
+
+setTimeout(() => {
+    toast({ text: 'Welcome to fuseday' })
+
+    socket.emit('foo', `Hello, I'm a client`)
+}, 3000)
+
+
 Vue.mixin({ methods: { route } })
 
 import PortalVue from 'portal-vue'
 Vue.use(PortalVue)
 
-window.EventBus = new Vue
 
 const files = require.context('./components', true, /\.vue|\.js$/i)
 files.keys().map(key => window.Vue.component(key.split('/').pop().split('.')[0], files(key).default))
