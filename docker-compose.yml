@@ -12,9 +12,9 @@ services:
             - '.:/var/www/html'
             - './docker/supervisord.conf:/etc/supervisor/conf.d/supervisord.conf'
         networks:
-            - platform
+            - web
 
 
 networks:
-    platform:
-        driver: bridge
+    web:
+        external: true

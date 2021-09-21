@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+    app:
+        image: hub.fuseday.io/poc2:${TAG:-latest}
+        volumes:
+            - '.env:/var/www/html/.env'
+        networks:
+            - web
+        labels:
+          - "traefik.enable=true"
+          - "traefik.http.routers.registry.rule=Host(`poc2.fuseday.io`)"
+          - "traefik.http.routers.registry.entrypoints=websecure"
+          - "traefik.http.services.registry.loadbalancer.server.port=80"
+          - "traefik.http.routers.registry.service=app"
+          - "traefik.http.routers.registry.tls.certresolver=leresolver"
+
+networks:
+    web:
+        external: true
