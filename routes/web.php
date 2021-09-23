@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', WelcomeController::class);
+Route::post('/', [WelcomeController::class, 'store']);
+Route::get('/admin/permission-manager', function() {
+    return \Inertia\Inertia::render('Admin/PermissionManager');
+});
 Route::get('/details', [PagesController::class, 'details']);
 Route::get('/html', [PagesController::class, 'html']);
 Route::get('/remote-components', [PagesController::class, 'remoteComponents']);

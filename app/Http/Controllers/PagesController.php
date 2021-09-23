@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Torquish;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class PagesController extends Controller
@@ -18,10 +17,7 @@ class PagesController extends Controller
     public function secret()
     {
         return Inertia::render('HtmlPage', [
-            'html' => view('pages.secret', [
-                'shareIcon' => 'mdi-share',
-//            'shareIcon' => 'mdi-share-circle', // switch me
-            ])->render(),
+            'html' => view('pages.secret')->render(),
         ]);
     }
 

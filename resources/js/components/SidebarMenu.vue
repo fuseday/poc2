@@ -24,11 +24,13 @@ export default {
     data: () => ({
         selectedItem: null,
         items: [
-            { href:'/', text: 'Dashboard', icon: 'mdi-view-dashboard-variant-outline' },
+            { href:'/', text: 'Home', icon: 'mdi-view-dashboard-variant-outline' },
+            { href:'/dashboard', text: 'Dashboard', icon: 'mdi-view-dashboard-variant-outline' },
             { href:'/remote-components', text: 'Remote Components', icon: 'mdi-access-point' },
             { href:'/details', text: 'Details', icon: 'mdi-account-details' },
             { href:'/secret', text: 'Secret', icon: 'mdi-lock' },
             { href:'/html', text: 'Html', icon: 'mdi-language-html5' },
+            { href:'/permission-manager', text: 'Permission Manager', icon: 'mdi-lock' },
         ],
     }),
     methods: {

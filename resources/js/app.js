@@ -4,21 +4,24 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 import Vue from 'vue'
 window.EventBus = new Vue
+
 import { createInertiaApp } from '@inertiajs/inertia-vue'
 import Vuetify from 'vuetify'
 Vue.use(Vuetify)
 const vuetify = new Vuetify()
 
 import { io } from "socket.io-client"
-console.log(process.env.MIX_SOCKETIO_SERVER)
 const socket = io(process.env.MIX_SOCKETIO_SERVER)
-
-
-socket.on('toast', (incomingToast) => {
-    console.log(incomingToast);
-    toast(incomingToast)
-})
-
+if (window.Laravel.socketio_url) {
+    socket.on('toast', (incomingToast) => {
+        console.log(incomingToast);
+        toast(incomingToast)
+    })
+    setTimeout(() => {
+        toast({ text: 'Welcome to fuseday' })
+        socket.emit('foo', `Hello, I'm a client`)
+    }, 3000)
+}
 
 import torque from '@fuseday/torquejs'
 Vue.use(torque.plugin())
@@ -39,13 +42,6 @@ function toast(toast) {
         }
     )
 }
-
-setTimeout(() => {
-    toast({ text: 'Welcome to fuseday' })
-
-    socket.emit('foo', `Hello, I'm a client`)
-}, 3000)
-
 
 Vue.mixin({ methods: { route } })
 

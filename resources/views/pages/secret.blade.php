@@ -25,7 +25,7 @@
                 <delete-joke />
                 @endcan
 
-                <x-joke-counters like-icon="mdi-heart" :share-icon="$shareIcon" />
+                <x-joke-counters like-icon="mdi-heart" share-icon="mdi-share" />
             </v-list-item>
         </v-card-actions>
     </v-card>
