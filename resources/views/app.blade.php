@@ -22,7 +22,7 @@
 
         <script defer>
             window.Laravel = window.Laravel || {}
-            window.Laravel.socketio_url = "{{ config('socketio.url') }}"
+            {{--window.Laravel.socketio_url = "{{ config('socketio.url') }}"--}}
         </script>
 
         <script src="{{ mix('/js/app.js') }}" defer></script>

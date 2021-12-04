@@ -11,8 +11,9 @@ Vue.use(Vuetify)
 const vuetify = new Vuetify()
 
 import { io } from "socket.io-client"
-const socket = io(process.env.MIX_SOCKETIO_SERVER)
 if (window.Laravel.socketio_url) {
+    const socket = io(process.env.MIX_SOCKETIO_SERVER)
+
     socket.on('toast', (incomingToast) => {
         console.log(incomingToast);
         toast(incomingToast)
