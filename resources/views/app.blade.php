@@ -11,21 +11,6 @@
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <!-- Scripts -->
         @routes
-
-        @production
-        <script src="/js/vue.min.js" defer></script>
-        @else
-        <script src="/js/vue.js" defer></script>
-        @endproduction
-
-        @stack('register-components')
-
-        <script defer>
-            window.Laravel = window.Laravel || {}
-            {{--window.Laravel.socketio_url = "{{ config('socketio.url') }}"--}}
-        </script>
-
-        <script src="{{ mix('/js/app.js') }}" defer></script>
     </head>
     <body>
         @inertia
@@ -33,5 +18,17 @@
         @env('local')
             <script src="http://localhost:35729/livereload.js"></script>
         @endenv
+
+        @production
+            <script src="/js/vue.min.js"></script>
+        @else
+            <script src="/js/vue.js"></script>
+        @endproduction
+
+        @stack('register-components')
+
+        @inject('torque', 'torque') {!! $torque->renderComponents() !!}
+
+        <script src="{{ mix('/js/app.js') }}"></script>
     </body>
 </html>

@@ -19,6 +19,8 @@ services:
             XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
         volumes:
             - '.:/var/www/html'
+            - './../poc-legos:/var/www/poc-legos'
+            - './../torque:/var/www/torque'
         networks:
             - sail
         depends_on:

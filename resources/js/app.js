@@ -10,20 +10,6 @@ import Vuetify from 'vuetify'
 Vue.use(Vuetify)
 const vuetify = new Vuetify()
 
-import { io } from "socket.io-client"
-if (window.Laravel.socketio_url) {
-    const socket = io(process.env.MIX_SOCKETIO_SERVER)
-
-    socket.on('toast', (incomingToast) => {
-        console.log(incomingToast);
-        toast(incomingToast)
-    })
-    setTimeout(() => {
-        toast({ text: 'Welcome to fuseday' })
-        socket.emit('foo', `Hello, I'm a client`)
-    }, 3000)
-}
-
 import torque from '@fuseday/torquejs'
 Vue.use(torque.plugin())
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4aed4d5aca5277ef652056a0c34c32cf",
+    "content-hash": "d4d413b2696c0cad55e1b6d99d424433",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -658,18 +658,43 @@
             "time": "2021-04-26T11:24:25+00:00"
         },
         {
-            "name": "fuseday/torque",
-            "version": "v0.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fuseday/torque.git",
-                "reference": "7c5966cd25f83396d2bce3babe17543fd1b7697f"
-            },
+            "name": "fuseday/poc2-card",
+            "version": "dev-master",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fuseday/torque/zipball/7c5966cd25f83396d2bce3babe17543fd1b7697f",
-                "reference": "7c5966cd25f83396d2bce3babe17543fd1b7697f",
-                "shasum": ""
+                "type": "path",
+                "url": "./../poc-legos/poc2-card",
+                "reference": "5580d2ad7b898b6704b0c1c164462224506e9932"
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.23"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Fuseday\\Poc2Card\\Poc2CardServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fuseday\\Poc2Card\\": "app/"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "fuseday/torque",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./../torque",
+                "reference": "7c5966cd25f83396d2bce3babe17543fd1b7697f"
             },
             "require": {
                 "illuminate/support": "^8.0",
@@ -699,7 +724,19 @@
                     "helpers/helpers.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Fuseday\\Torque\\Tests\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit --colors=always"
+                ],
+                "test-coverage": [
+                    "vendor/bin/phpunit --coverage-html coverage"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -718,11 +755,9 @@
                 "torque",
                 "vue"
             ],
-            "support": {
-                "issues": "https://github.com/fuseday/torque/issues",
-                "source": "https://github.com/fuseday/torque/tree/v0.0.3"
-            },
-            "time": "2021-08-05T23:24:42+00:00"
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "graham-campbell/result-type",
@@ -8956,7 +8991,10 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "fuseday/poc2-card": 20,
+        "fuseday/torque": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
